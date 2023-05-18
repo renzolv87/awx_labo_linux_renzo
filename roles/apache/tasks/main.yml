@@ -1,0 +1,25 @@
+---
+# tasks file for apache
+- name: instalamos paquetes
+  package:
+    name: "{{ item }}"
+    state: present
+  with_items: "{{ apache_packages }}"
+
+- name: levantamos servicio
+  service:
+    name: "{{ apache_service }}"
+    state: started
+    enabled: yes
+
+- name: cree pagina de bienvenida
+  copy:
+    src: index.html
+    dest: /var/www/html/index.html
+  notify: "restart service httpd"
+
+- name: copia template de conifg
+  template:
+    src: template_ejemplo.j2
+    dest: "/var/tmp/test2.conf"
+  notify: "restart service httpd"

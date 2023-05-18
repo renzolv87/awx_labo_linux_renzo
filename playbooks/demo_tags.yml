@@ -1,0 +1,35 @@
+---
+- hosts: "{{ servidores }}"
+  gather_facts: no
+  become: true
+  tasks:
+  - name: instalamos apache
+    package:
+      name: httpd
+      state: present
+    tags: install
+  - name: iniciamos httpd y lo dejamos persiste reboot
+    service:
+      name: httpd
+      state: started
+      enabled: yes
+    tags: config
+  - name: creamos pagina de bienvenida
+    copy:
+      dest: /var/www/html/index.html
+      content: |
+        <html>
+        <body>
+        <h1>It works!</h1>
+        Que bonito!
+        Que Bonito!
+        que bOnitO!
+        </body>
+    tags: config
+  - name: desinstalo apache
+    package:
+      name: httpd 
+      state: absent  
+    tags: [ uninstall, never ]
+  
+

@@ -1,0 +1,7 @@
+---
+# handlers file for apache
+- name: reinicia httpd
+  service:
+    name: "{{ apache_service }}"
+    state: restarted
+  listen: "restart service httpd"
