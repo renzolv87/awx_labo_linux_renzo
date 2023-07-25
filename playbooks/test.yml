@@ -3,9 +3,8 @@
   become: true
   tasks:
   - name: prueba
-    file:
-      path: /tmp/test.conf
-      dest: /tmp/test.conf2
+    debug:
+      var: test
     
     
 
