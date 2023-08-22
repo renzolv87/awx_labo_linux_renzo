@@ -1,7 +1,7 @@
 #create playbook that creates a linux virtual machine in azure
 ---
-- hosts: linux01
+- hosts: "{{ hosts }}"
   tasks:
   - name: show content of variable test
     debug:
-      var: test
+      msg: "hola soy obm {{ hosts }}"

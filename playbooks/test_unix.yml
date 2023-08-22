@@ -1,0 +1,7 @@
+#create playbook that creates a linux virtual machine in azure
+---
+- hosts: localhost
+  tasks:
+  - name: show content of variable test
+    debug:
+      msg: "hola localhost"
