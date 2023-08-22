@@ -1,11 +1,7 @@
+#create playbook that creates a linux virtual machine in azure
 ---
 - hosts: linux01
-  become: true
   tasks:
-  - name: prueba
+  - name: show content of variable test
     debug:
       var: test
-    
-    
-
-
